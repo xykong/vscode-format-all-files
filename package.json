@@ -1,7 +1,7 @@
 {
     "name": "format-all-files",
     "displayName": "Format All Files",
-    "description": "",
+    "description": "Format all files in selected folder by C# FixFormat for Visual Studio Code (sort usings, reformat with spaces, braces, parenthesis).",
     "version": "0.0.1",
     "publisher": "xykong",
     "engines": {
@@ -11,14 +11,28 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.formatAll"
     ],
+    "author": {
+        "name": "xykong",
+        "email": "xy.kong@gmail.com"
+    },
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+        "commands": [
+            {
+                "command": "extension.formatAll",
+                "title": "Format All"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "when": "explorerResourceIsFolder",
+                    "command": "extension.formatAll"
+                }
+            ]
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
@@ -31,5 +45,22 @@
         "eslint": "^3.6.0",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
+    },
+    "extensionDependencies": [
+        "Leopotam.csharpfixformat"
+    ],
+    "keywords": [
+        "C#",
+        "csharp",
+        "sort",
+        "using",
+        "format"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xykong/vscode-format-all-files"
+    },
+    "bugs": {
+        "url": "https://github.com/xykong/vscode-format-all-files/issues"
     }
 }
