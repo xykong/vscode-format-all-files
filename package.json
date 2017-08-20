@@ -2,7 +2,7 @@
     "name": "format-all-files",
     "displayName": "Format All Files",
     "description": "Format all files in selected folder by C# FixFormat for Visual Studio Code (sort usings, reformat with spaces, braces, parenthesis).",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "xykong",
     "engines": {
         "vscode": "^1.15.0"
