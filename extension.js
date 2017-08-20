@@ -18,7 +18,6 @@ function activate(context) {
     var disposable = vscode.commands.registerCommand('extension.formatAll', function () {
         // The code you place here will be executed every time your command is executed
 
-
         if (!!arguments && arguments.length > 0 && !!arguments[0].path) {
             var selectedFolder = arguments[0].path;
             if (fs.existsSync(selectedFolder) && fs.lstatSync(selectedFolder).isDirectory()) {
@@ -33,17 +32,6 @@ function activate(context) {
                         return new Promise((resolve, reject) => {
 
                             openAndFormat(value, 0, p, resolve);
-
-                            // p.report({ message: 'Start working...' });
-                            // let count = 0;
-                            // let handle = setInterval(() => {
-                            //     count++;
-                            //     p.report({ message: 'Worked ' + count + ' steps' });
-                            //     if (count >= 10) {
-                            //         clearInterval(handle);
-                            //         resolve();
-                            //     }
-                            // }, resolve);
                         });
                     });
 
@@ -69,6 +57,7 @@ exports.deactivate = deactivate;
 function openAndFormat(files, index, p, resolve) {
 
     if (files.length <= index) {
+        vscode.window.showInformationMessage(`Format all files done. ${files.length} files processed.`);
         resolve();
         return;
     }
